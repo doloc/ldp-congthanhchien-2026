@@ -1,6 +1,6 @@
 import { useState } from 'react'
-
-type ActiveTab = 'rules' | 'rewards'
+import ModalRule from './Modal-Rule'
+import ModalRewards from './Modal-Rewards'
 
 interface LeaderboardRow {
   rank: number
@@ -17,121 +17,141 @@ const PLACEHOLDER_ROWS: LeaderboardRow[] = Array.from({ length: 10 }, (_, i) => 
 }))
 
 export default function Section3Leaderboard() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('rules')
   const [selectedServer, setSelectedServer] = useState('')
+  const [showRuleModal, setShowRuleModal] = useState(false)
+  const [showRewardsModal, setShowRewardsModal] = useState(false)
 
   return (
-    <section className="relative w-full aspect-[768/2296] md:aspect-[1920/1105] bg-cover bg-center bg-no-repeat overflow-hidden
-    bg-[url('/images/mb-bg.jpg')] md:bg-[url('/images/pc-leaderboard-bg.jpg')] flex flex-col items-center">
-      <img src="/images/leaderboard-title.png" alt="" className="mt-[1%] w-[50.83%] object-contain" />
+    <>
+      <section className="relative w-full aspect-[640/1105] md:aspect-[1920/1105] bg-cover bg-center bg-no-repeat overflow-hidden
+      bg-[url('/images/mb-leaderboard-bg.jpg')] md:bg-[url('/images/pc-leaderboard-bg.jpg')] flex flex-col items-center">
+      <img src="/images/leaderboard-title.png" alt="" className="mt-[5%] md:mt-[1%] w-full md:w-[50.83%] object-contain" />
 
-      {/* Tab navigation */}
-      <div className="">
-        {/* <button
-          className={`px-6 py-2 rounded text-sm font-bold transition-all ${
-            activeTab === 'rules'
-              ? 'bg-game-gold text-game-bg-dark shadow-lg'
-              : 'border border-game-gold text-game-gold hover:bg-game-gold/10'
-          }`}
-          onClick={() => setActiveTab('rules')}
-        >
-          Thể lệ giải đấu
-        </button> */}
-
-        {/* <div className="relative">
+      {/* PC - Tab navigation */}
+      <div className="hidden md:flex w-[32.55%] aspect-[625/65] items-center justify-between">
+        <button className="pt-[2%] pr-[1%] text-[#712510] text-[1.2vw] w-[32%] aspect-[200/65] bg-cover bg-center bg-no-repeat 
+        bg-[url('/images/btn-bg.png')] flex items-center justify-center hover:brightness-110" onClick={() => setShowRuleModal(true)}>Thể lệ giải đấu</button>
+        <div className="mt-[1.5%] mr-[3%] relative w-[32.16%] aspect-[201/46] bg-cover bg-center bg-no-repeat overflow-hidden
+        bg-[url('/images/btn-server-bg.png')]">
           <select
-            className="appearance-none bg-game-bg-dark border border-game-gold/60 text-game-gold rounded px-4 pr-8 py-2 text-sm cursor-pointer focus:outline-none focus:border-game-gold"
+            className='w-full h-full text-[#B53722] text-[1.2vw] cursor-pointer appearance-none px-4 pr-8 bg-transparent border-none'
             value={selectedServer}
             onChange={(e) => setSelectedServer(e.target.value)}
             aria-label="Chọn máy chủ"
           >
             <option value="">Chọn máy chủ</option>
           </select>
-          <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-game-gold pointer-events-none text-xs">
+          <span className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#B53722] text-[1/2vw]">
             ▼
           </span>
-        </div> */}
-
-        {/* <button
-          className={`px-6 py-2 rounded text-sm font-bold transition-all ${
-            activeTab === 'rewards'
-              ? 'bg-game-gold text-game-bg-dark shadow-lg'
-              : 'border border-game-gold text-game-gold hover:bg-game-gold/10'
-          }`}
-          onClick={() => setActiveTab('rewards')}
-        >
-          Thưởng giải đấu
-        </button> */}
+        </div>
+        <button className="pt-[2%] pr-[1%] text-[#712510] text-[1.2vw] w-[32%] aspect-[201/65] bg-cover bg-center bg-no-repeat 
+        bg-[url('/images/btn-bg.png')] flex items-center justify-center hover:brightness-110" onClick={() => setShowRewardsModal(true)}>Thưởng giải đấu</button>
       </div>
 
-        {/* Leaderboard table */}
-        {/* <div className="lb-table-wrap rounded-lg overflow-hidden border border-game-gold/25 shadow-xl">
-          <p className="text-center text-xs md:text-sm text-game-text/60 py-3 px-4 bg-game-bg-dark/50 border-b border-game-gold/15">
+      {/* Mobile - Tab navigation */}
+      <div className="md:hidden w-[63.28%] flex items-center justify-between">
+        <button className="pt-[2%] pr-[3%] text-[#712510] text-[3.6vw] w-[49.38%] aspect-[200/65] bg-cover bg-center bg-no-repeat 
+          bg-[url('/images/btn-bg.png')] flex items-center justify-center hover:brightness-110" onClick={() => setShowRuleModal(true)}>Thể lệ giải đấu</button>
+        <button className="pt-[2%] pr-[3%] text-[#712510] text-[3.6vw] w-[49.63%] aspect-[201/65] bg-cover bg-center bg-no-repeat 
+          bg-[url('/images/btn-bg.png')] flex items-center justify-center hover:brightness-110" onClick={() => setShowRewardsModal(true)}>Thưởng giải đấu</button>
+      </div>
+      <div className="md:hidden mt-[1.5%] relative w-[31.41%] aspect-[201/46] bg-cover bg-center bg-no-repeat overflow-hidden
+      bg-[url('/images/btn-server-bg.png')]">
+        <select
+          className='w-full h-full text-[#B53722] text-[3.8vw] cursor-pointer appearance-none px-4 pr-12 bg-transparent border-none'
+          value={selectedServer}
+          onChange={(e) => setSelectedServer(e.target.value)}
+          aria-label="Chọn máy chủ"
+        >
+          <option value="">Chọn máy chủ</option>
+        </select>
+        <span className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#B53722] text-[1/2vw]">
+          ▼
+        </span>
+      </div>
+
+      {/* Leaderboard table */}
+      <div className="relative w-full md:w-[53.18%] aspect-[640/698] md:aspect-[1021/634] bg-cover bg-center bg-no-repeat overflow-hidden
+      bg-[url('/images/mb-leaderboard-bg.png')] md:bg-[url('/images/pc-leaderboard-shape.png')] flex flex-col items-center justify-center">
+        
+        {/* Table header */}
+        <div className="-mt-[15%] w-[78.9%] h-[60.32%] bg-white rounded-xl md:rounded-md">
+          <p className="mt-[2%] md:mt-0 text-center text-[#A43321] text-[3.6vw] md:text-[1.2vw]">
             Bảng Xếp Hạng được cập nhật vào 10:00 Thứ 4 &amp; Thứ 2 hàng tuần
           </p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr className="bg-game-bg-dark">
-                  <th className="py-3 px-4 text-left text-game-gold font-semibold whitespace-nowrap">Hạng</th>
-                  <th className="py-3 px-4 text-left text-game-gold font-semibold whitespace-nowrap">Bang Hội</th>
-                  <th className="py-3 px-4 text-left text-game-gold font-semibold whitespace-nowrap">Máy Chủ</th>
-                  <th className="py-3 px-4 text-left text-game-gold font-semibold whitespace-nowrap">Điểm Công Thành</th>
+          
+          <table className="mt-[2%] w-full border-collapse text-[3.4vw] md:text-[1.2vw] text-[#CC620E]">
+            <thead>
+              <tr className="bg-[#FDF6EF]">
+                <th className="text-center w-[10%]">
+                  Hạng
+                </th>
+                <th className="text-center w-[20%]">
+                  Bảng Hội
+                </th>
+                <th className="text-center w-[15%]">
+                  Máy Chủ
+                </th>
+                <th className="text-center w-[15%]">
+                  Điểm Công Thành
+                </th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              {PLACEHOLDER_ROWS.map((row, index) => (
+                <tr
+                  key={row.rank}
+                  className={index % 2 === 0 ? '' : 'bg-[#FDF6EF]'}
+                >
+                  <td className={index < 3 ? 'text-center text-[#A31F1F]' : 'text-center text-[#070A09]'}>
+                    {row.rank}
+                  </td>
+                  <td className={index < 3 ? 'text-center text-[#A31F1F]' : 'text-center text-[#070A09]'}>
+                    {row.guild}
+                  </td>
+                  <td className={index < 3 ? 'text-center text-[#A31F1F]' : 'text-center text-[#070A09]'}>
+                    {row.server}
+                  </td>
+                  <td className={index < 3 ? 'text-center text-[#A31F1F]' : 'text-center text-[#070A09]'}>
+                    {row.score}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {PLACEHOLDER_ROWS.map((row) => (
-                  <tr
-                    key={row.rank}
-                    className={`border-b border-game-gold/10 transition-colors hover:bg-game-gold/5 ${
-                      row.rank <= 3
-                        ? 'text-game-gold-light font-semibold'
-                        : 'text-game-text'
-                    } ${row.rank % 2 === 0 ? 'bg-white/[0.02]' : ''}`}
-                  >
-                    <td className="py-3 px-4">{row.rank}</td>
-                    <td className="py-3 px-4">{row.guild}</td>
-                    <td className="py-3 px-4">{row.server}</td>
-                    <td className="py-3 px-4">{row.score}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div> */}
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
       {/* ── Footer ── inside section 3 per requirement */}
-      {/* <footer className="site-footer mt-16 bg-game-bg-darker border-t border-game-gold/20">
-        <div className="max-w-game mx-auto px-4 py-8 md:py-10 text-center">
-
-
-          <div className="flex items-center justify-center gap-8 mb-6">
-            <div className="h-8 md:h-10 w-28 bg-game-red/50 rounded flex items-center justify-center text-xs text-game-gold font-bold">
-              ZAGOO GAMES
-            </div>
-            <div className="h-8 md:h-10 w-24 bg-game-red/50 rounded flex items-center justify-center text-xs text-game-gold font-bold">
-              KINGSOFT
-            </div>
-          </div>
-
-          <div className="text-[11px] md:text-xs text-game-text/45 leading-relaxed space-y-1 max-w-2xl mx-auto">
-            <p>Công ty TNHH Giải Trí ZIE.</p>
-            <p>
-              Địa chỉ trụ sở chính: Tầng 17, Tòa Nhà ROX Tower, số 54A Nguyễn Chí Thanh,
-              Phường Láng Thượng, Quận Đống Đa, Thành phố Hà Nội, Việt Nam
-            </p>
-            <p>
-              Quyết định phê duyệt nội dung kịch bản trò chơi điện tử G1 trên mạng số:
-              39/QĐ-PTTH&amp;TTĐT do Bộ Thông tin và Truyền thông cấp ngày 18/02/2025
-            </p>
-            <p>
-              Giấy phép cung cấp dịch vụ trò chơi điện tử G1 trên mạng: số 43/GP-BTTTT
-              do Bộ Thông tin và Truyền thông cấp ngày 21/01/2025
-            </p>
-          </div>
+      <footer className="w-full aspect-[640/172] md:aspect-[1920/208] bg-cover bg-center bg-no-repeat overflow-hidden
+      bg-[url('/images/mb-footer-bg.jpg')] md:bg-[url('/images/pc-footer-bg.jpg')] flex flex-col items-center text-[#F3DDB9] font-myriad-pro">
+        <div className="mt-[0.5%] w-[30.625%] md:w-[17.71%] flex items-center justify-center">
+          <img src="/images/icon-zagoo.png" alt="" className="w-[36.18%] object-contain" />
+          <img src="/images/icon-kingsoft.png" alt="" className="w-[52.94%] object-contain" />
         </div>
-      </footer> */}
+        {/* PC */}
+        <div className="mt-[0.5%] hidden md:flex font-medium flex-col items-center text-center text-[1vw] leading-relaxed">
+          <p>Công ty TNHH Giải Trí ZIE.</p>
+          <p>Địa chỉ trụ sở chính: Tầng 17, Tòa nhà ROX Tower, số 54A Nguyễn Chí Thanh, Phường Láng, Thành phố Hà Nội</p>
+          <p>Quyết định phê duyệt nội dung kịch bản trò chơi điện tử G1 trên mạng số: 39/QĐ-PTTH&TTĐT do Bộ Thông tin và Truyền thông cấp ngày 18/02/2025</p>
+          <p>Giấy phép cung cấp dịch vụ trò chơi điện tử G1 trên mạng: số 43/GP-BTTTT do Bộ Thông tin và Truyền thông cấp ngày 21/01/2025</p>
+        </div>
+        {/* Mobile */}
+        <div className="md:hidden font-medium flex flex-col items-center text-center text-[1.8vw] text-semibold leading-relaxed px-[5%]">
+          <p>Công ty TNHH Giải Trí ZIE.</p>
+          <p>Địa chỉ trụ sở chính: Tầng 17, Tòa nhà ROX Tower, số 54A Nguyễn Chí Thanh, Phường Láng Thượng</p>
+          <p>Qậnn Đống Đa, Thành phố Hà Nội, Việt Nam</p>
+          <p>Quyết định phê duyệt nội dung kịch bản trò chơi điện tử G1 trên mạng số: 39/QĐ-PTTH&TTĐT </p>
+          <p>do Bộ Thông tin và Truyền thông cấp ngày 18/02/2025</p>
+          <p>Giấy phép cung cấp dịch vụ trò chơi điện tử G1 trên mạng: số 43/GP-BTTTT</p>
+          <p>do Bộ Thông tin và Truyền thông cấp ngày 21/01/2025</p>
+        </div>
+      </footer>
     </section>
+    {showRuleModal && <ModalRule setShowPopup={setShowRuleModal} />}
+    {showRewardsModal && <ModalRewards setShowPopup={setShowRewardsModal} />}
+    </>
   )
 }

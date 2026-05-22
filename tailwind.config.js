@@ -7,6 +7,7 @@ export default {
         sans: ['UTM Cafeta', 'system-ui', 'sans-serif'],
         'utm-cafeta': ['UTM Cafeta', 'system-ui', 'sans-serif'],
         'fz-games': ['FZ Games', 'system-ui', 'sans-serif'],
+        'myriad-pro': ['Myriad Pro', 'system-ui', 'sans-serif'],
       },
       colors: {
         'game-bg': '#54240d',
