@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <main className="w-full overflow-x-hidden">
       <Section1Hero />
-      {/* <Section2Video videoEmbedUrl={VIDEO_EMBED_URL} />
-      <Section3Leaderboard /> */}
+      <Section2Video videoEmbedUrl={VIDEO_EMBED_URL} />
+      <Section3Leaderboard />
     </main>
   )
 }
