@@ -109,4 +109,13 @@ a {
     outline-offset: 2px;
     border-radius: 4px;
   }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
