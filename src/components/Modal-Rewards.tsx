@@ -28,8 +28,8 @@ export default function ModalRewards({ setShowPopup }: { setShowPopup: (show: bo
             <br />
             <p>🔥 Đặc biệt, TOP 3 Bang Hội mỗi cụm Liên Server sẽ chính thức ghi danh vào vòng bình chọn "ĐỆ NHẤT BANG HỘI ĐƯỢC YÊU THÍCH NHẤT".</p>
             <p>📅 Thời gian bình chọn:</p>
-            <p>• Đợt 1: 04/06 - 11/06/2026</p>
-            <p>• Đợt 2: 12/06 - 19/06/2026</p>
+            <p>• Đợt 1: 05/06 - 12/06/2026</p>
+            <p>• Đợt 2: 13/06 - 20/06/2026</p>
             <br />
             <p>🎁 Người chơi tham gia bình chọn còn có cơ hội nhận:</p>
             <p>▫️ Tín Vật Môn Phái</p>

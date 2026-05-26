@@ -13,11 +13,11 @@ export default function ModalRule({ setShowPopup }: { setShowPopup: (show: boole
             <br />
             <p>📅 THỜI GIAN DIỄN RA SỰ KIỆN</p>
             <p>🔥 Tuần 1: Đua TOP BXH Công Thành Chiến Liên Server</p>
-            <p>⏰ Thời gian: 25/05 - 03/06/2026</p>
+            <p>⏰ Thời gian: 26/05 - 04/06/2026</p>
             <p>🔥 Tuần 2: Bình chọn Bang Hội được yêu thích nhất - Đợt 1</p>
-            <p>⏰ Thời gian: 04/06 - 11/06/2026</p>
+            <p>⏰ Thời gian: 05/06 - 12/06/2026</p>
             <p>🔥 Tuần 3: Bình chọn Bang Hội được yêu thích nhất - Đợt 2</p>
-            <p>⏰ Thời gian: 12/06 - 19/06/2026</p>
+            <p>⏰ Thời gian: 13/06 - 20/06/2026</p>
             <br />
             <p>📌 ĐIỀU KIỆN THAM GIA</p>
             <p>• Đăng nhập Landing Page bằng tài khoản Zalo/GG/FB.</p>
@@ -35,11 +35,11 @@ export default function ModalRule({ setShowPopup }: { setShowPopup: (show: boole
             <p>• Thời gian phát thưởng dự kiến từ 3 - 14 ngày.</p>
             <br />
             <p>🔥 THỂ LỆ BÌNH CHỌN ĐỆ NHẤT BANG</p>
-            <p>📍 Vòng 1 (04/06 - 11/06/2026)</p>
+            <p>📍 Vòng 1 (05/06 - 12/06/2026)</p>
             <p>• TOP 3 Bang Hội đạt điểm cao nhất tại sự kiện Công Thành Chiến Liên Server sẽ được chia ngẫu nhiên vào 7 bảng đấu.</p>
             <p>• Mỗi bảng gồm 9 Bang Hội.</p>
             <p>• Sau khi kết thúc Vòng 1, TOP 3 Bang Hội có lượt bình chọn cao nhất mỗi bảng sẽ bước tiếp vào Vòng 2.</p>
-            <p>📍 Vòng 2 (12/06 - 19/06/2026)</p>
+            <p>📍 Vòng 2 (13/06 - 20/06/2026)</p>
             <p>• 21 Bang Hội vượt qua Vòng 1 sẽ tiếp tục được chia ngẫu nhiên vào 3 bảng đấu.</p>
             <p>• Kết thúc Vòng 2, TOP 1 Bang Hội có lượt bình chọn cao nhất mỗi bảng sẽ trở thành ĐỆ NHẤT BANG HỘI.</p>
             <br />
