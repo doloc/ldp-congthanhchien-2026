@@ -76,7 +76,7 @@ export default function Section3Leaderboard() {
       bg-[url('/images/mb-leaderboard-bg.png')] md:bg-[url('/images/pc-leaderboard-shape.png')] flex flex-col items-center justify-center">
         
         {/* Table header */}
-        <div className="-mt-[15%] w-[78.9%] h-[60.32%] bg-white rounded-xl md:rounded-md">
+        <div className="-mt-[15%] md:mt-0 w-[78.9%] h-[60.32%] md:h-[80.32%] bg-white rounded-xl md:rounded-md overflow-y-scroll no-scrollbar">
           <p className="mt-[2%] md:mt-0 text-center text-[#A43321] text-[3.6vw] md:text-[1.2vw]">
             Bảng Xếp Hạng được cập nhật vào 10:00 Thứ 4 &amp; Thứ 2 hàng tuần
           </p>
